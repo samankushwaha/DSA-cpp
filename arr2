@@ -1,0 +1,31 @@
+//Write a Java program that checks whether two strings are anagrams or not. 
+//An anagram is a word or phrase formed by rearranging the letters of another word or phrase.
+//Implement a function that takes in two strings as input and returns true if they are anagrams, and false
+import java.util.Arrays;
+
+public class AnagramChecker {
+    public static boolean areAnagrams(String str1, String str2) {
+        // Remove spaces and punctuation, and convert to lowercase
+        str1 = str1.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        str2 = str2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+        // Convert strings to character arrays and sort them
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        // Compare the sorted character arrays
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+        System.out.println(areAnagrams(str1, str2)); // Output: true
+
+        str1 = "restful";
+        str2 = "fluster";
+        System.out.println(areAnagrams(str1, str2)); // Output: true
+    }
+}
